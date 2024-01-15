@@ -25,7 +25,7 @@
 # SOFTWARE,  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import os
-from vertexai.language_models import ChatModel, ChatMessage, TextEmbeddingModel
+from vertexai.preview.generative_models import GenerativeModel, Content, Part, TextEmbeddingModel
 from openai.embeddings_utils import distances_from_embeddings
 
 from typing import List, Dict
@@ -36,7 +36,7 @@ class Gemini(NeonLLM):
 
     mq_to_llm_role = {
         "user": "user",
-        "llm": "bot"
+        "llm": "model"
     }
 
     def __init__(self, config):
@@ -44,6 +44,7 @@ class Gemini(NeonLLM):
         self._embedding = None
         self._context_depth = 0
 
+        self.model_name = config["model"]
         self.role = config["role"]
         self.context_depth = config["context_depth"]
         self.max_tokens = config["max_tokens"]
@@ -67,9 +68,9 @@ class Gemini(NeonLLM):
         return ""
 
     @property
-    def model(self) -> ChatModel:
+    def model(self) -> GenerativeModel:
         if self._model is None:
-            self._model = ChatModel.from_pretrained("chat-bison")
+            self._model = GenerativeModel(self.model_name)
         return self._model
     
     @property
@@ -114,13 +115,14 @@ class Gemini(NeonLLM):
         """
 
         chat = self._model.start_chat(
-            context=prompt["system_prompt"],
-            message_history=prompt["chat_history"],
-            max_output_tokens=self.max_tokens,
-            temperature=0,
+            history=prompt["chat_history"],
         )
         response = chat.send_message(
             prompt["message"],
+            generation_config = {
+                "temperature": 0,
+                "max_output_tokens": self.max_tokens,
+            }
         )
         text = response.text
 
@@ -141,9 +143,8 @@ class Gemini(NeonLLM):
         messages = []
         for role, content in chat_history[-self.context_depth:]:
             role_gemini = self.convert_role(role)
-            messages.append(ChatMessage(content, role_gemini))
+            messages.append(Content(parts=[Part.from_text(content)], role = role_gemini))
         prompt = {
-            "system_prompt": system_prompt,
             "chat_history": messages,
             "message": message
         }
