@@ -142,6 +142,8 @@ class Gemini(NeonLLM):
         # Context N messages
         messages = []
         for role, content in chat_history[-self.context_depth:]:
+            if ((len(messages) == 0) and (role == "user")):
+                content = self._convert2instruction(content, system_prompt)
             role_gemini = self.convert_role(role)
             messages.append(Content(parts=[Part.from_text(content)], role = role_gemini))
         prompt = {
@@ -150,6 +152,10 @@ class Gemini(NeonLLM):
         }
 
         return prompt
+
+    def _convert2instruction(self, content: str, system_prompt: str):
+        instruction = f"{system_prompt.strip()}\n\n{content.strip()}"
+        return instruction
 
     def _score(self, prompt: str, targets: List[str], persona: dict) -> List[float]:
         """
