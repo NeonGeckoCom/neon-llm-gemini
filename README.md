@@ -29,6 +29,7 @@ MQ:
       password: <neon_gemini user's password>
       user: neon_gemini
 LLM_GEMINI:
+  model: "gemini-pro"
   key_path: ""
   role: "You are trying to give a short answer in less than 40 words."
   context_depth: 3
