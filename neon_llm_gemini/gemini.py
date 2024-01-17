@@ -25,7 +25,8 @@
 # SOFTWARE,  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import os
-from vertexai.preview.generative_models import GenerativeModel, Content, Part, TextEmbeddingModel
+from vertexai.preview.generative_models import GenerativeModel, Content, Part
+from vertexai.language_models import TextEmbeddingModel
 from openai.embeddings_utils import distances_from_embeddings
 
 from typing import List, Dict
