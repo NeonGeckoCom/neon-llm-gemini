@@ -25,12 +25,12 @@
 # SOFTWARE,  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 from neon_llm_core.rmq import NeonLLMMQConnector
 
-from neon_llm_palm2.palm2 import Palm2
+from neon_llm_gemini.gemini import Gemini
 
 
-class Palm2MQ(NeonLLMMQConnector):
+class GeminiMQ(NeonLLMMQConnector):
     """
-        Module for processing MQ requests to Palm2
+        Module for processing MQ requests to Gemini
     """
 
     def __init__(self):
@@ -39,12 +39,12 @@ class Palm2MQ(NeonLLMMQConnector):
 
     @property
     def name(self):
-        return "palm2"
+        return "gemini"
 
     @property
     def model(self):
         if self._model is None:
-            self._model = Palm2(self.model_config)
+            self._model = Gemini(self.model_config)
         return self._model
 
     def warmup(self):

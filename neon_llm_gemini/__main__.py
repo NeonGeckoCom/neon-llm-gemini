@@ -24,15 +24,15 @@
 # NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE,  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-from neon_llm_palm2.rmq import Palm2MQ
+from neon_llm_gemini.rmq import GeminiMQ
 
 
 def main():
     # Run RabbitMQ
-    palm2MQ = Palm2MQ()
-    palm2MQ.run(run_sync=False, run_consumers=True,
+    geminiMQ = GeminiMQ()
+    geminiMQ.run(run_sync=False, run_consumers=True,
                   daemonize_consumers=True)
-    palm2MQ.observer_thread.join()
+    geminiMQ.observer_thread.join()
 
 
 if __name__ == "__main__":
