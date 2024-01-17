@@ -147,6 +147,8 @@ class Gemini(NeonLLM):
                 content = self._convert2instruction(content, system_prompt)
             role_gemini = self.convert_role(role)
             messages.append(Content(parts=[Part.from_text(content)], role = role_gemini))
+        if (len(messages) == 0):
+            message = self._convert2instruction(message, system_prompt)
         prompt = {
             "chat_history": messages,
             "message": message
