@@ -25,14 +25,16 @@
 # SOFTWARE,  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 from neon_llm_gemini.rmq import GeminiMQ
+from neon_utils.log_utils import init_log
 
 
 def main():
+    init_log(log_name="gemini")
+
     # Run RabbitMQ
-    geminiMQ = GeminiMQ()
-    geminiMQ.run(run_sync=False, run_consumers=True,
-                  daemonize_consumers=True)
-    geminiMQ.observer_thread.join()
+    gemini_mq_service = GeminiMQ()
+    gemini_mq_service.run(run_sync=False, run_consumers=True,
+                          daemonize_consumers=True)
 
 
 if __name__ == "__main__":
