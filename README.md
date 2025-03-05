@@ -1,5 +1,5 @@
-# NeonAI LLM ChatGPT
-Proxies API calls to ChatGPT.
+# NeonAI LLM Gemini
+Proxies API calls to Google Gemini.
 
 ## Request Format
 API requests should include `history`, a list of tuples of strings, and the current
@@ -25,20 +25,21 @@ MQ:
   port: <MQ Port>
   server: <MQ Hostname or IP>
   users:
-    mq-chatgpt-api:
-      password: <neon_chatgpt user's password>
-      user: neon_chatgpt
-ChatGPT:
-  key: ""
-  model: "gpt-3.5-turbo"
+    neon_llm_gemini:
+      password: <neon_gemini user's password>
+      user: neon_gemini
+LLM_GEMINI:
+  model: "gemini-pro"
+  key_path: ""
   role: "You are trying to give a short answer in less than 40 words."
   context_depth: 3
   max_tokens: 100
+  num_parallel_processes: 2
 ```
 
 For example, if your configuration resides in `~/.config`:
 ```shell
 export CONFIG_PATH="/home/${USER}/.config"
-docker run -v ${CONFIG_PATH}:/config neon_llm_chatgpt
+docker run -v ${CONFIG_PATH}:/config neon_llm_gemini
 ```
 > Note: If connecting to a local MQ server, you may need to specify `--network host`

@@ -1,6 +1,6 @@
 # NEON AI (TM) SOFTWARE, Software Development Kit & Application Development System
 # All trademark and other rights reserved by their respective owners
-# Copyright 2008-2021 Neongecko.com Inc.
+# Copyright 2008-2025 Neongecko.com Inc.
 # BSD-3
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -24,40 +24,18 @@
 # NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE,  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-import openai
+from neon_llm_gemini.rmq import GeminiMQ
+from neon_utils.log_utils import init_log
 
 
-class ChatGPT:
-    def __init__(self, config):
-        self.model = config["model"]
-        self.role = config["role"]
-        self.context_depth = config["context_depth"]
-        self.max_tokens = config["max_tokens"]
-        openai.api_key = config["key"]
+def main():
+    init_log(log_name="gemini")
 
-    @staticmethod
-    def convert_role(role):
-        if role == "user":
-            role_chatgpt = "user"
-        elif role == "llm":
-            role_chatgpt = "assistant"
-        return role_chatgpt
+    # Run RabbitMQ
+    gemini_mq_service = GeminiMQ()
+    gemini_mq_service.run(run_sync=False, run_consumers=True,
+                          daemonize_consumers=True)
 
-    def ask(self, message, chat_history):
-        messages = [
-            {"role": "system", "content": self.role},
-        ]
-        # Context N messages
-        for role, content in chat_history[-self.context_depth:]:
-            role_chatgpt = self.convert_role(role)
-            messages.append({"role": role_chatgpt, "content": content})
-        messages.append({"role": "user", "content": message})
-        
-        response = openai.ChatCompletion.create(
-            model=self.model,
-            messages=messages,
-            temperature=0,
-            max_tokens=self.max_tokens,
-        )
-        bot_message = response.choices[0].message['content']
-        return bot_message
+
+if __name__ == "__main__":
+    main()
