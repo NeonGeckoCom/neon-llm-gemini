@@ -20,7 +20,7 @@ MQ:
       user: neon_api_utils
       password: Klatchat2021
 LLM_GEMINI:
-  model: "gemini-pro"
+  model: "gemini-2.0-flash"
   role: "You are trying to give a short answer in less than 40 words."
   context_depth: 3
   max_tokens: 100

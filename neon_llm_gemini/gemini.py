@@ -25,11 +25,12 @@
 # SOFTWARE,  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import os
-from vertexai.preview.generative_models import GenerativeModel, Content, Part
+from vertexai.generative_models import GenerativeModel, Content, Part, SafetySetting, HarmCategory, HarmBlockThreshold
 from vertexai.language_models import TextEmbeddingModel
 from openai.embeddings_utils import distances_from_embeddings
+from ovos_utils.log import LOG
 
-from typing import List, Dict
+from typing import List, Dict, Tuple
 from neon_llm_core.llm import NeonLLM
 
 
@@ -71,7 +72,15 @@ class Gemini(NeonLLM):
     @property
     def model(self) -> GenerativeModel:
         if self._model is None:
-            self._model = GenerativeModel(self.model_name)
+            settings = []
+            for category in HarmCategory:
+                settings.append(SafetySetting(
+                    category=category,
+                    threshold=HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE))
+            LOG.info(f"Creating model with name {self.model_name} and "
+                     f"safety settings {settings}")
+            self._model = GenerativeModel(self.model_name, 
+                                          safety_settings=settings)
         return self._model
     
     @property
@@ -175,7 +184,8 @@ class Gemini(NeonLLM):
     def _tokenize(self, prompt: str) -> None:
         pass
 
-    def _embeddings(self, question: str, answers: List[str], persona: dict) -> (List[float], List[List[float]]):
+    def _embeddings(self, question: str, answers: List[str],
+                    persona: dict) -> Tuple[List[float], List[List[float]]]:
         """
             Computes embeddings for the list of provided answers
             :param question: Question for LLM to response to
