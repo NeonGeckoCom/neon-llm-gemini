@@ -1,80 +1,12 @@
 # Changelog
 
-## [0.0.2a10](https://github.com/NeonGeckoCom/neon-llm-gemini/tree/0.0.2a10) (2025-03-03)
+## [0.1.1a1](https://github.com/NeonGeckoCom/neon-llm-gemini/tree/0.1.1a1) (2025-04-16)
 
-[Full Changelog](https://github.com/NeonGeckoCom/neon-llm-gemini/compare/0.0.2a9...0.0.2a10)
-
-**Merged pull requests:**
-
-- Update to stable dependencies [\#7](https://github.com/NeonGeckoCom/neon-llm-gemini/pull/7) ([NeonDaniel](https://github.com/NeonDaniel))
-
-## [0.0.2a9](https://github.com/NeonGeckoCom/neon-llm-gemini/tree/0.0.2a9) (2025-01-17)
-
-[Full Changelog](https://github.com/NeonGeckoCom/neon-llm-gemini/compare/0.0.2a8...0.0.2a9)
+[Full Changelog](https://github.com/NeonGeckoCom/neon-llm-gemini/compare/0.1.0...0.1.1a1)
 
 **Merged pull requests:**
 
-- Update Docker configuration and async consumer init [\#6](https://github.com/NeonGeckoCom/neon-llm-gemini/pull/6) ([NeonDaniel](https://github.com/NeonDaniel))
-
-## [0.0.2a8](https://github.com/NeonGeckoCom/neon-llm-gemini/tree/0.0.2a8) (2025-01-17)
-
-[Full Changelog](https://github.com/NeonGeckoCom/neon-llm-gemini/compare/0.0.2a7...0.0.2a8)
-
-**Merged pull requests:**
-
-- Add Docker container update automation [\#5](https://github.com/NeonGeckoCom/neon-llm-gemini/pull/5) ([NeonDaniel](https://github.com/NeonDaniel))
-
-## [0.0.2a7](https://github.com/NeonGeckoCom/neon-llm-gemini/tree/0.0.2a7) (2024-04-04)
-
-[Full Changelog](https://github.com/NeonGeckoCom/neon-llm-gemini/compare/0.0.2a6...0.0.2a7)
-
-**Merged pull requests:**
-
-- neon-llm-core version bump [\#4](https://github.com/NeonGeckoCom/neon-llm-gemini/pull/4) ([NeonBohdan](https://github.com/NeonBohdan))
-
-## [0.0.2a6](https://github.com/NeonGeckoCom/neon-llm-gemini/tree/0.0.2a6) (2024-03-25)
-
-[Full Changelog](https://github.com/NeonGeckoCom/neon-llm-gemini/compare/0.0.2a5...0.0.2a6)
-
-**Merged pull requests:**
-
-- neon-llm-core version bump [\#3](https://github.com/NeonGeckoCom/neon-llm-gemini/pull/3) ([NeonBohdan](https://github.com/NeonBohdan))
-
-## [0.0.2a5](https://github.com/NeonGeckoCom/neon-llm-gemini/tree/0.0.2a5) (2024-01-17)
-
-[Full Changelog](https://github.com/NeonGeckoCom/neon-llm-gemini/compare/0.0.2a3...0.0.2a5)
-
-**Merged pull requests:**
-
-- Use Gemini [\#1](https://github.com/NeonGeckoCom/neon-llm-gemini/pull/1) ([NeonBohdan](https://github.com/NeonBohdan))
-
-## [0.0.2a3](https://github.com/NeonGeckoCom/neon-llm-gemini/tree/0.0.2a3) (2023-11-16)
-
-[Full Changelog](https://github.com/NeonGeckoCom/neon-llm-gemini/compare/0.0.2a2...0.0.2a3)
-
-## [0.0.2a2](https://github.com/NeonGeckoCom/neon-llm-gemini/tree/0.0.2a2) (2023-10-23)
-
-[Full Changelog](https://github.com/NeonGeckoCom/neon-llm-gemini/compare/0.0.2a1...0.0.2a2)
-
-## [0.0.2a1](https://github.com/NeonGeckoCom/neon-llm-gemini/tree/0.0.2a1) (2023-10-19)
-
-[Full Changelog](https://github.com/NeonGeckoCom/neon-llm-gemini/compare/0.0.1...0.0.2a1)
-
-## [0.0.1](https://github.com/NeonGeckoCom/neon-llm-gemini/tree/0.0.1) (2023-06-30)
-
-[Full Changelog](https://github.com/NeonGeckoCom/neon-llm-gemini/compare/0.0.1a4...0.0.1)
-
-## [0.0.1a4](https://github.com/NeonGeckoCom/neon-llm-gemini/tree/0.0.1a4) (2023-06-30)
-
-[Full Changelog](https://github.com/NeonGeckoCom/neon-llm-gemini/compare/0.0.1a3...0.0.1a4)
-
-## [0.0.1a3](https://github.com/NeonGeckoCom/neon-llm-gemini/tree/0.0.1a3) (2023-06-06)
-
-[Full Changelog](https://github.com/NeonGeckoCom/neon-llm-gemini/compare/0.0.1a2...0.0.1a3)
-
-## [0.0.1a2](https://github.com/NeonGeckoCom/neon-llm-gemini/tree/0.0.1a2) (2023-05-16)
-
-[Full Changelog](https://github.com/NeonGeckoCom/neon-llm-gemini/compare/babd77e0f173fbe3681927677602c72c58774ff0...0.0.1a2)
+- Update to non-preview API, explicitly define safety, and default to supported Gemini model [\#9](https://github.com/NeonGeckoCom/neon-llm-gemini/pull/9) ([NeonDaniel](https://github.com/NeonDaniel))
 
 
 
