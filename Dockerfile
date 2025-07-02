@@ -16,10 +16,10 @@ WORKDIR /app
 COPY . /app
 RUN apt-get update && \
     apt-get install --no-install-recommends -y \
-    git \
     curl \
     jq
 
 RUN pip install --no-cache-dir /app
 
+HEALTHCHECK CMD "/opt/neon/healthcheck.sh"
 CMD [ "neon-llm-gemini" ]
